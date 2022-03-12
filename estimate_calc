@@ -1,0 +1,85 @@
+# This is a sample Python script.
+
+# Press Shift+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+
+
+def print_hi(name):
+    # Use a breakpoint in the code line below to debug your script.
+    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+
+def calc(hight, length, sq_rate):
+    result = (hight * length) * sq_rate
+    # print(result)
+    return result
+
+def slab_count(lenth, breath, slab_lenth):
+    slab_cnt = round(lenth/slab_lenth)
+    # slab_cnt2 = breath / slab_lenth
+    # slab = slab_cnt + slab_cnt2
+    return slab_cnt
+
+
+if __name__ == '__main__':
+
+    print('###### Fencing Estimate ######')
+
+    # Inputs From Customer
+    std_slab_lenth = 6
+    length = 24
+    breath = 14
+    rate = 95
+    hight = 6
+
+    print("#### Given Information ####")
+    print(f'slab_lenth: {length}\nbreath: {breath}\nrate/sq feet: {rate}\nhight: {hight}')
+    # print(f'std_slab_lenth: {std_slab_lenth}, length : {length}, breath : {breath}, rate : {rate}, hight : {hight}')
+
+    print("#" * 30)
+    slab_left = slab_count(length, breath, std_slab_lenth)
+    slab_right = slab_count(length, breath, std_slab_lenth)
+    slab_top = slab_count(breath, breath, std_slab_lenth)
+    slab_botom = 0 # What is the size of Entrance/gate
+    total_column = slab_left + 1 + slab_right + 1 + slab_top + 1
+    print("total_column: ", total_column)
+    print(f'slab_top: {slab_top}, slab_right: {slab_right}, slab_left: {slab_left}')
+    print("total slab", slab_left * hight + slab_right * hight + slab_top * hight)
+    print("#" * 30)
+    top_value = round(slab_top)
+
+    rows = slab_right
+    columns = slab_top
+    ch = '\u29DF'
+
+    from tkinter import *
+
+    # rect = Canvas(20, 20)
+
+    print("######## Map ##########")
+    for i in range(rows):
+        for j in range(columns):
+            print('%c' % ch, end='  ')
+        print()
+    print("#" * 30)
+
+    # for i in range(top_value + 1):
+    #     if i == top_value:
+    #         print('\u2194  ' * i)
+    # print(u"\u2195")
+    # print(u"\u2195")
+    # for i in range(top_value + 1):
+    #     if i == top_value:
+    #         print(']'+ ('[-]' * i)+ '[')
+    # print(f'ela \[')
+    # print(u"\u23b6")
+
+
+    side1 = calc(hight, length, rate)
+    side2 = calc(hight, length, rate)
+    side3 = calc(hight, breath, rate)
+    # Cover how many sides
+
+    print("#" * 30)
+    print("Total :", side1 + side2 + side3)
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/
